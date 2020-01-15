@@ -1,0 +1,15 @@
+#boss.thread.count 主要是Netty 处理建连事件的线程 一般只需设置为1就行
+#worker.thread.count Netty处理相关连 IO 事件的线程 为了充分利用 CPU，同时考虑减少上下文切换的开销，通常设置为 CPU 核数的两倍
+stim:
+  boss:
+    thread:
+      count: 1
+  worker:
+    thread:
+      count: 4
+  tcp:
+    port: 8855
+    nodelay: true
+  so:
+    keepalive: true
+    backlog: 1024
