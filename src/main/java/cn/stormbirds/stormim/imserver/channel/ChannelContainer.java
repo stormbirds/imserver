@@ -1,7 +1,7 @@
 package cn.stormbirds.stormim.imserver.channel;
 
 import io.netty.channel.Channel;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -16,14 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @ Date 2019/5/13 17:15
  *
  */
-
+@Slf4j
 @Component
 public class ChannelContainer {
-
-
-    private ChannelContainer() {
-
-    }
 
     private static final ChannelContainer INSTANCE = new ChannelContainer();
 
@@ -46,6 +41,7 @@ public class ChannelContainer {
             return;
         }
         CHANNELS.put(channel.getChannelId(), channel);
+        log.info("总连接数："+CHANNELS.size());
         if(channel.getUserId().length()>20)
             NonRegisteredCount.incrementAndGet();
         else RegisteredCount.incrementAndGet();

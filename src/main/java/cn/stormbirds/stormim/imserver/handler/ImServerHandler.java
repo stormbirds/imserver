@@ -37,16 +37,16 @@ public class ImServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
         logger.info("ImServerHandler channelActive()" + ctx.channel().remoteAddress());
+        super.channelActive(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        super.channelInactive(ctx);
         logger.info("ImServerHandler channelInactive()"+ctx.channel());
         // 用户断开连接后，移除channel
         ChannelContainer.getInstance().removeChannelIfConnectNoActive(ctx.channel());
+        super.channelInactive(ctx);
     }
 
     @Override

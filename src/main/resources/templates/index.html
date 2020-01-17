@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StormIM Server</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        setInterval(function(){
+            $.ajax({url:"/api/v1/getConnectNum",success:function(result){
+                    $("#connectNum").html(result);
+                }});
+
+        },1000)
+    </script>
+</head>
+<body>
+
+    <div style='background:#168DFD;text-align:center;line-height:45px'>
+        <span style='color: #fff'>StormIM 基本信息</span>
+    </div>
+    <div style='padding:10px 12px 10px 12px'>
+<!--        <nav class='nav'>
+            <a href='#' style='color:#168DFD'>基本</a>
+        </nav>-->
+        <div id="test" class='mod'>
+            <table class='tab'>
+                <tr><th colspan='4'>总连接数</th></tr>
+                <tr><td id="connectNum">0</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
